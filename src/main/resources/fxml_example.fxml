@@ -18,27 +18,19 @@
         <URL value="@style.css"/>
     </stylesheets>
 
-    <Text id="welcome-text" text="Welcome"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+    <Text id="welcome-text" text="Welcome" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
 
-    <Label text="User Name:"
-           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField
-            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" onMouseClicked="#handleUsernameClicked"/>
 
-    <Label text="Password:"
-           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField fx:id="passwordField"
-                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button text="Sign In"
-                onAction="#handleSubmitButtonAction"/>
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button text="Sign In" onAction="#handleSubmitButtonAction"/>
     </HBox>
 
-    <Text fx:id="actionTarget"
-          GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <Text fx:id="warningTarget" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <Text fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
 </GridPane>
