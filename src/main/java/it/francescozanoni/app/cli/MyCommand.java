@@ -1,4 +1,4 @@
-package it.francescozanoni.app;
+package it.francescozanoni.app.cli;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;

@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package it.francescozanoni.app;
+package it.francescozanoni.app.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
