@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.util.concurrent.Callable;
 
-@Command(name = "checksum", 
+@Command(name = "checksum",
          mixinStandardHelpOptions = true,
          version = "checksum 4.0",
          description = "Prints the checksum (MD5 by default) of a file to STDOUT.")
@@ -36,7 +36,7 @@ class MyCommand implements Callable<Integer> {
     public Integer call() throws Exception { // your business logic goes here...
         byte[] fileContents = Files.readAllBytes(file.toPath());
         byte[] digest = MessageDigest.getInstance(algorithm).digest(fileContents);
-        System.out.printf("%0" + (digest.length*2) + "x%n", new BigInteger(1, digest));
+        System.out.printf("%0" + (digest.length * 2) + "x%n", new BigInteger(1, digest));
         return 0;
     }
 }
