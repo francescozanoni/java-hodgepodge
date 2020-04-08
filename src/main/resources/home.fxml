@@ -4,18 +4,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:controller="it.francescozanoni.app.gui.ApiClientController"
+<GridPane fx:controller="it.francescozanoni.app.gui.HomeController"
           xmlns:fx="http://javafx.com/fxml" hgap="10" vgap="10">
 
+    <!--
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
+    -->
 
-    <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <fx:include fx:id="menu" source="menu.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
 
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <Label text="OK" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
     <Button text="Sign In" GridPane.columnIndex="0" GridPane.rowIndex="3" onAction="#handleSubmitButtonAction"/>
 
