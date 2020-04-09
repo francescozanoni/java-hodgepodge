@@ -30,27 +30,59 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package it.francescozanoni.app.gui;
+package it.francescozanoni.app.gui.example;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
-public class FXMLExample extends Application {
+public class FXMLExampleController {
 
-    public static void main(String[] args) {
-        Application.launch(FXMLExample.class, args);
+    @FXML
+    private Text actionTarget;
+    @FXML
+    private Text warningTarget;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private TextField usernameField;
+
+    public void initialize() {
+        // Focus out
+        // https://stackoverflow.com/questions/42943652/how-to-trigger-an-event-on-focus-out-for-a-textfield-in-javafx-using-fxml?rq=1
+        usernameField.focusedProperty().addListener((ov, oldV, newV) -> {
+            if (!newV) {
+                // https://stackoverflow.com/questions/35308219/how-to-format-a-text-field-javafx
+                usernameField.setStyle("-fx-font-weight: normal");
+            }
+        });
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        // https://stackoverflow.com/questions/20507591/javafx-location-is-required-even-though-it-is-in-the-same-package
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml_example.fxml"));
+    @FXML
+    protected void handleSubmitButtonAction(ActionEvent event) {
+        warningTarget.setText("");
+        actionTarget.setText("");
 
-        stage.setTitle("FXML Welcome");
-        stage.setScene(new Scene(root, 300, 275));
-        stage.show();
+        if (passwordField.getText().equals("")) {
+            warningTarget.setText("EMPTY PASSWORD");
+            return;
+        }
+
+        actionTarget.setText("Sign in button pressed");
     }
+
+    @FXML
+    protected void handleUsernameClicked(MouseEvent event) {
+        TextField usernameField = (TextField) event.getSource();
+        String usernameFieldContent = usernameField.getText();
+
+        actionTarget.setText("Username: " + usernameFieldContent);
+
+        // https://stackoverflow.com/questions/35308219/how-to-format-a-text-field-javafx
+        usernameField.setStyle("-fx-font-weight: bold");
+    }
+
 }

@@ -7,8 +7,8 @@
          fx:id="myMenuBar">
 
     <Menu fx:id="mMain" text="Main">
-        <MenuItem text="ACTION" onAction="#handleMenuClickedA"></MenuItem>
-        <MenuItem text="BCTION" onAction="#handleMenuClickedB"></MenuItem>
+        <MenuItem text="Go to home" onAction="#handleHomeMenuClicked"></MenuItem>
+        <MenuItem text="Go to login" onAction="#handleLoginMenuClicked"></MenuItem>
         <SeparatorMenuItem></SeparatorMenuItem>
         <MenuItem text="Exit"></MenuItem>
     </Menu>
