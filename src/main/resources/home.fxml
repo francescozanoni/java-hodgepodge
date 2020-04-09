@@ -20,7 +20,7 @@
             <Label text="OK" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-            <Button text="Sign In" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#handleSubmitButtonAction"/>
+            <Button text="Log out" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#handleSubmitButtonAction"/>
 
         </GridPane>
 

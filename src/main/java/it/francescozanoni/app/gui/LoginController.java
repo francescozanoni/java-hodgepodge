@@ -9,6 +9,8 @@ public class LoginController {
     @FXML
     protected void handleSubmitButtonAction(ActionEvent event) throws Exception {
 
+        Status.getInstance().page = "home";
+
         Shared.changeScene((Node) event.getSource(), "home.fxml");
 
     }
