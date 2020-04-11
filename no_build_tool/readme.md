@@ -1,17 +1,23 @@
 # Basic Java FX example
 
-FX=/path/to/javafx-sdk-A.B.C/lib
+## Compile/run separate .class files
 
-cd /path/to/project
+    FX=/path/to/javafx-sdk-N.N.N/lib
 
-javac -classpath $FX/javafx.fxml.jar:$FX/javafx.base.jar:$FX/javafx.controls.jar:$FX/javafx.graphics.jar \
-      Main.java \
-      Controller.java
+    cd /path/to/project
 
-java --module-path $FX \
-     --add-modules=javafx.controls,javafx.fxml \
-     -classpath . \
-     Main
+    javac -classpath $FX/javafx.fxml.jar:$FX/javafx.base.jar:$FX/javafx.controls.jar:$FX/javafx.graphics.jar \
+          Main.java \
+          Controller.java
+
+    java --module-path $FX \
+         --add-modules=javafx.controls,javafx.fxml \
+         Main
+
+## Build/run executable .jar file
+
+    jar cvfe App.jar Main *.class
 
 Sources:
  - https://stackoverflow.com/questions/52467561/intellij-cant-recognize-javafx-11-with-openjdk-11
+ - http://www.skylit.com/javamethods/faqs/createjar.html
