@@ -20,8 +20,7 @@ public class MenuController implements Initializable {
     MenuBar myMenuBar;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
+    public void initialize(URL location, ResourceBundle resources) {
         if (status.page.equals("login")) {
             myMenuBar.getMenus().get(0).getItems().get(1).setDisable(true);
         }

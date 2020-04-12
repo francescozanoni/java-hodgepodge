@@ -6,13 +6,13 @@
          fx:controller="it.francescozanoni.app.gui.MenuController"
          fx:id="myMenuBar">
 
-    <Menu fx:id="mMain" text="Main">
-        <MenuItem text="Go to home" onAction="#handleHomeMenuClicked"></MenuItem>
-        <MenuItem text="Go to login" onAction="#handleLoginMenuClicked"></MenuItem>
-        <SeparatorMenuItem></SeparatorMenuItem>
-        <MenuItem text="Exit"></MenuItem>
+    <Menu text="Main">
+        <MenuItem text="Go to home" onAction="#handleHomeMenuClicked"/>
+        <MenuItem text="Go to login" onAction="#handleLoginMenuClicked"/>
+        <SeparatorMenuItem/>
+        <MenuItem text="Exit"/>
     </Menu>
 
-    <Menu fx:id="mAbout" text="About"></Menu>
+    <Menu text="About"/>
 
 </MenuBar>

@@ -8,25 +8,20 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1"
-      prefWidth="300"
       fx:controller="it.francescozanoni.app.gui.LoginController">
 
-    <children>
+    <fx:include source="menu.fxml"/>
 
-        <fx:include fx:id="menu" source="menu.fxml"/>
+    <GridPane>
 
-        <GridPane hgap="10" vgap="10">
+        <Label text="User name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-            <Label text="User name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button onAction="#handleSubmitButtonAction" text="Log in" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
-            <Button onAction="#handleSubmitButtonAction" text="Log in" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-
-        </GridPane>
-
-    </children>
+    </GridPane>
 
 </VBox>

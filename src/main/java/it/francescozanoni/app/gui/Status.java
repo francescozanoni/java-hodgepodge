@@ -6,6 +6,7 @@ public final class Status {
     private static Status instance = null;
 
     public String page;
+    public String username;
 
     private Status() {}
 
