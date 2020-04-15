@@ -12,8 +12,8 @@ public class MenuController implements Initializable {
 
     private Status status;
 
-    public MenuController() {
-        this.status = Status.getInstance();
+    public MenuController(Status status) {
+        this.status = status;
     }
 
     @FXML

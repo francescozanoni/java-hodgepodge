@@ -12,8 +12,8 @@ public class LoginController {
 
     private Status status;
 
-    public LoginController() {
-        this.status = Status.getInstance();
+    public LoginController(Status status) {
+        this.status = status;
     }
 
     @FXML

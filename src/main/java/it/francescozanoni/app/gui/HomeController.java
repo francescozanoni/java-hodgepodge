@@ -16,8 +16,8 @@ public class HomeController implements Initializable {
     @FXML
     Label usernameLabel;
 
-    public HomeController() {
-        this.status = Status.getInstance();
+    public HomeController(Status status) {
+        this.status = status;
     }
 
     @Override

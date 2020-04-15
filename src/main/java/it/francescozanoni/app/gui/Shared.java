@@ -10,7 +10,10 @@ import java.net.URL;
 public interface Shared {
 
     static Scene getSceneFromFxml(URL fxmlFileUrl) throws Exception {
-        return new Scene(FXMLLoader.load(fxmlFileUrl));
+        // https://stackoverflow.com/questions/28387218/why-does-my-javafx-stage-not-want-to-load
+        // http://java-no-makanaikata.blogspot.com/2012/11/javafx-fxml-root-value-already-specified.html
+        FXMLLoader loader = FXMLLoaderFactory.get(fxmlFileUrl);
+        return new Scene(loader.load());
     }
 
     static Stage getStageFromNode(Node node) {
