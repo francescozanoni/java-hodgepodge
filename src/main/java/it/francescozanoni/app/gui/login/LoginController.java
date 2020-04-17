@@ -1,4 +1,4 @@
-package it.francescozanoni.app.gui;
+package it.francescozanoni.app.gui.login;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ public class LoginController {
     @FXML
     TextField usernameField;
 
-    private Status status;
+    private final Status status;
 
     public LoginController(Status status) {
         this.status = status;
@@ -25,7 +25,7 @@ public class LoginController {
 
         status.page = "home";
 
-        Shared.changeScene((Node) event.getSource(), "home.fxml");
+        Shared.changeScene((Node) event.getSource(), "login/home.fxml");
 
     }
 

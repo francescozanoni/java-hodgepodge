@@ -1,4 +1,4 @@
-package it.francescozanoni.app.gui;
+package it.francescozanoni.app.gui.login;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ public class Starter extends Application {
 
         status.page = "login";
 
-        Scene scene = Shared.getSceneFromFxml(getClass().getResource("/login.fxml"));
+        Scene scene = Shared.getSceneFromFxml(getClass().getResource("/login/login.fxml"));
 
         stage.setTitle("API client");
         stage.setScene(scene);

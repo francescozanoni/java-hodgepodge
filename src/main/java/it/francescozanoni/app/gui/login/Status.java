@@ -1,4 +1,4 @@
-package it.francescozanoni.app.gui;
+package it.francescozanoni.app.gui.login;
 
 // Inspired by https://www.geeksforgeeks.org/singleton-class-java
 public final class Status {

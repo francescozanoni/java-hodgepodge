@@ -1,4 +1,4 @@
-package it.francescozanoni.app.gui;
+package it.francescozanoni.app.gui.login;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
-    private Status status;
+    private final Status status;
 
     @FXML
     Label usernameLabel;
@@ -36,7 +36,7 @@ public class HomeController implements Initializable {
 
         status.page = "login";
 
-        Shared.changeScene((Node) event.getSource(), "login.fxml");
+        Shared.changeScene((Node) event.getSource(), "login/login.fxml");
 
     }
 

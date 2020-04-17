@@ -1,4 +1,4 @@
-package it.francescozanoni.app.gui;
+package it.francescozanoni.app.gui.login;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
 
-    private Status status;
+    private final Status status;
 
     public MenuController(Status status) {
         this.status = status;
@@ -34,7 +34,7 @@ public class MenuController implements Initializable {
         status.page = "home";
 
         // https://stackoverflow.com/questions/45168721/how-to-change-scenes-in-menuitem-in-javafx-fxmlcontroller
-        Shared.changeScene(myMenuBar, "home.fxml");
+        Shared.changeScene(myMenuBar, "login/home.fxml");
     }
 
     @FXML
@@ -42,7 +42,7 @@ public class MenuController implements Initializable {
         status.page = "login";
 
         // https://stackoverflow.com/questions/45168721/how-to-change-scenes-in-menuitem-in-javafx-fxmlcontroller
-        Shared.changeScene(myMenuBar, "login.fxml");
+        Shared.changeScene(myMenuBar, "login/login.fxml");
     }
 
 }
