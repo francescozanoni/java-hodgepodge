@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +12,8 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     private final Status status;
+    public MenuItem home;
+    public MenuItem login;
 
     public MenuController(Status status) {
         this.status = status;
@@ -30,19 +33,13 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    protected void handleHomeMenuClicked(ActionEvent event) throws Exception {
-        status.page = "home";
+    protected void handleMenuClicked(ActionEvent event) throws Exception {
+
+        MenuItem clickedMenu = (MenuItem) event.getSource();
 
         // https://stackoverflow.com/questions/45168721/how-to-change-scenes-in-menuitem-in-javafx-fxmlcontroller
-        Shared.changeScene(myMenuBar, "login/home.fxml");
-    }
+        Shared.changeScene(myMenuBar, clickedMenu.getId());
 
-    @FXML
-    protected void handleLoginMenuClicked(ActionEvent event) throws Exception {
-        status.page = "login";
-
-        // https://stackoverflow.com/questions/45168721/how-to-change-scenes-in-menuitem-in-javafx-fxmlcontroller
-        Shared.changeScene(myMenuBar, "login/login.fxml");
     }
 
 }

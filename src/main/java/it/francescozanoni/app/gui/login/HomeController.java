@@ -34,9 +34,7 @@ public class HomeController implements Initializable {
 
         status.username = null;
 
-        status.page = "login";
-
-        Shared.changeScene((Node) event.getSource(), "login/login.fxml");
+        Shared.changeScene((Node) event.getSource(), "login");
 
     }
 

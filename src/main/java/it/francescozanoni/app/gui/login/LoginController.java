@@ -23,9 +23,7 @@ public class LoginController {
             status.username = usernameField.getText().trim();
         }
 
-        status.page = "home";
-
-        Shared.changeScene((Node) event.getSource(), "login/home.fxml");
+        Shared.changeScene((Node) event.getSource(), "home");
 
     }
 

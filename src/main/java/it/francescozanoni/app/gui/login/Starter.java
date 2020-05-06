@@ -1,7 +1,6 @@
 package it.francescozanoni.app.gui.login;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Starter extends Application {
@@ -13,14 +12,9 @@ public class Starter extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Status status = Status.getInstance();
-
-        status.page = "login";
-
-        Scene scene = Shared.getSceneFromFxml(getClass().getResource("/login/login.fxml"));
+        Shared.changeScene(stage, "login");
 
         stage.setTitle("API client");
-        stage.setScene(scene);
         stage.show();
     }
 
