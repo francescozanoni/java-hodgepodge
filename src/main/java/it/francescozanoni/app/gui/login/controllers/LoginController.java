@@ -1,5 +1,8 @@
-package it.francescozanoni.app.gui.login;
+package it.francescozanoni.app.gui.login.controllers;
 
+import it.francescozanoni.app.gui.login.Page;
+import it.francescozanoni.app.gui.login.Utils;
+import it.francescozanoni.app.gui.login.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -23,7 +26,7 @@ public class LoginController {
             status.username = usernameField.getText().trim();
         }
 
-        Shared.changeScene((Node) event.getSource(), "home");
+        Utils.changeScene((Node) event.getSource(), Page.HOME);
 
     }
 

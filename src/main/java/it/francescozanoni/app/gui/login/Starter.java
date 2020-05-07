@@ -12,7 +12,7 @@ public class Starter extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Shared.changeScene(stage, "login");
+        Utils.changeScene(stage, Page.LOGIN);
 
         stage.setTitle("API client");
         stage.show();

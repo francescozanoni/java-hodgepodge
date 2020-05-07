@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox stylesheets="@style.css"
-      fx:controller="it.francescozanoni.app.gui.login.HomeController"
+      fx:controller="it.francescozanoni.app.gui.login.controllers.HomeController"
       xmlns:fx="http://javafx.com/fxml">
 
-    <fx:include fx:id="menu" source="menu.fxml"/>
+    <fx:include source="menu.fxml"/>
 
     <GridPane>
 
@@ -18,6 +15,24 @@
         <Label fx:id="usernameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
         <Button text="Log out" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#handleSubmitButtonAction"/>
+
+        <Button text="Add request" GridPane.columnIndex="0" GridPane.rowIndex="2" onAction="#handleAddRequestButtonAction"/>
+
+        <TableView fx:id="requestTable"
+                   GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+            <columns>
+                <TableColumn text="URL">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="url" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Result">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="result" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
 
     </GridPane>
 

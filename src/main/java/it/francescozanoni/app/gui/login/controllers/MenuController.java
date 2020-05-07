@@ -1,5 +1,8 @@
-package it.francescozanoni.app.gui.login;
+package it.francescozanoni.app.gui.login.controllers;
 
+import it.francescozanoni.app.gui.login.Page;
+import it.francescozanoni.app.gui.login.Utils;
+import it.francescozanoni.app.gui.login.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,15 +23,17 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    MenuBar myMenuBar;
+    MenuBar mainMenuBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (status.page.equals("login")) {
-            myMenuBar.getMenus().get(0).getItems().get(1).setDisable(true);
-        }
-        if (status.page.equals("home")) {
-            myMenuBar.getMenus().get(0).getItems().get(0).setDisable(true);
+        switch (status.page) {
+            case LOGIN:
+                mainMenuBar.getMenus().get(0).getItems().get(1).setDisable(true);
+                break;
+            case HOME:
+                mainMenuBar.getMenus().get(0).getItems().get(0).setDisable(true);
+                break;
         }
     }
 
@@ -38,7 +43,7 @@ public class MenuController implements Initializable {
         MenuItem clickedMenu = (MenuItem) event.getSource();
 
         // https://stackoverflow.com/questions/45168721/how-to-change-scenes-in-menuitem-in-javafx-fxmlcontroller
-        Shared.changeScene(myMenuBar, clickedMenu.getId());
+        Utils.changeScene(mainMenuBar, Page.valueOf(clickedMenu.getId().toUpperCase()));
 
     }
 
