@@ -2,8 +2,8 @@ package it.francescozanoni.app.gui.login.controllers;
 
 import it.francescozanoni.app.gui.login.Page;
 import it.francescozanoni.app.gui.login.Request;
-import it.francescozanoni.app.gui.login.Utils;
 import it.francescozanoni.app.gui.login.Status;
+import it.francescozanoni.app.gui.login.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +12,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.Enumeration;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -44,11 +48,22 @@ public class HomeController implements Initializable {
         Utils.changeScene((Node) event.getSource(), Page.LOGIN);
     }
 
-    public void handleAddRequestButtonAction(ActionEvent actionEvent) {
+    public void handleAddRequestsButtonAction(ActionEvent actionEvent) throws IOException {
         ObservableList<Request> data = requestTable.getItems();
-        if (data.size() > 0) {
-            data.remove(0);
-        }
-        data.add(new Request("http://ciao.it", String.valueOf(System.currentTimeMillis())));
+
+        data.clear();
+
+        // https://crunchify.com/java-properties-file-how-to-read-config-properties-values-in-java
+        Properties config = new Properties();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("login/config.properties");
+        config.load(inputStream);
+
+        Enumeration<Object> keys = config.keys();
+        do {
+            String url = config.getProperty((String) keys.nextElement());
+            String time = String.valueOf(System.currentTimeMillis());
+            data.add(new Request(url, time));
+        } while (keys.hasMoreElements());
+
     }
 }
