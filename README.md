@@ -12,6 +12,7 @@ Documentation sources within code comments.
   * `async`: asynchronicity, concurrency and lambda expressions
   * `cli`: command line app with [picocli](https://picocli.info) package
   * `concurrency/db`: concurrency while writing to database
+  * `concurrency/http`: web pages concurrent download, with IBAN extraction via regular expressions
   * `gui`: several [JavaFX](https://openjfx.io) examples
   * `App.java`: dumb application used for dumb test
 * `src/test/java/it/francescozanoni/app/AppTest.java`: dumb test of dumb application
