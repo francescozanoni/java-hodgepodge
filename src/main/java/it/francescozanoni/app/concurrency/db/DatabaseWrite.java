@@ -1,4 +1,4 @@
-package it.francescozanoni.app.concurrency;
+package it.francescozanoni.app.concurrency.db;
 
 import java.sql.*;
 
@@ -7,7 +7,7 @@ public class DatabaseWrite extends Thread {
     private final Connection connection;
     private final String query;
     private boolean withTransactions = false;
-    private TaskCounter taskCounter;
+    private final TaskCounter taskCounter;
 
     /**
      * @param dsn         database connection string

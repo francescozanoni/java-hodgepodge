@@ -1,4 +1,4 @@
-package it.francescozanoni.app.concurrency;
+package it.francescozanoni.app.concurrency.db;
 
 import java.io.*;
 import java.sql.*;
