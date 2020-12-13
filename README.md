@@ -28,7 +28,10 @@ Thorough documentation sources are listed within code comments.
     ```
 * single class execution:
     ```
-    java -classpath target\classes it.francescozanoni.app.concurrency.http.Main
+    java -classpath target/classes it.francescozanoni.app.concurrency.http.Main
+    
+    # In case of java.lang.NoClassDefFoundError: org/json/simple/parser/ParseException
+    mvn exec:java -Dexec.mainClass="it.francescozanoni.app.concurrency.http.Main"
     ```
 * package generation and execution:
     ```

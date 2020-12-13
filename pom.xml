@@ -100,6 +100,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Solves java.lang.NoClassDefFoundError: org/json/simple/parser/ParseException, -->
+            <!-- if run with mvn exec:java -Dexec.mainClass="it.francescozanoni.app.concurrency.http.Main" -->
+            <!-- @see https://stackoverflow.com/questions/1089285/maven-run-project -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+            </plugin>
         </plugins>
     </build>
 </project>
