@@ -14,7 +14,8 @@ class Main {
 
     public static void main(String[] args) throws IOException {
 
-        HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
+        InetSocketAddress address = new InetSocketAddress(serverPort);
+        HttpServer server = HttpServer.create(address, 0);
 
         server.createContext("/hello", (exchange -> {
             String respText = "Hi!";
@@ -24,8 +25,6 @@ class Main {
             output.flush();
             exchange.close();
         }));
-
-        server.setExecutor(null); // creates a default executor
 
         server.start();
 
