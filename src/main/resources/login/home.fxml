@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox stylesheets="@style.css"
-      fx:controller="it.francescozanoni.app.gui.login.controllers.HomeController"
+      fx:controller="it.francescozanoni.gui.login.controllers.HomeController"
       xmlns:fx="http://javafx.com/fxml">
 
     <fx:include source="menu.fxml"/>

@@ -39,18 +39,12 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.34.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20201115</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
-<dependency>
-    <groupId>org.glassfish.jaxb</groupId>
-    <artifactId>jaxb-runtime</artifactId>
-    <version>3.0.0</version>
-</dependency>
     </dependencies>
     <properties>
         <!--
@@ -75,7 +69,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>it.francescozanoni.app.cli.MyCommand</mainClass>
+                            <mainClass>it.francescozanoni.cli.MyCommand</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -85,7 +79,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <!-- this is required to used lambda expressions -->
+                    <!-- this is required to use lambda expressions -->
                     <source>11</source>
                     <target>11</target>
                 </configuration>
@@ -105,14 +99,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- Solves java.lang.NoClassDefFoundError: org/json/simple/parser/ParseException, -->
-            <!-- if run with mvn exec:java -Dexec.mainClass="it.francescozanoni.app.concurrency.http.Main" -->
-            <!-- @see https://stackoverflow.com/questions/1089285/maven-run-project -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
             </plugin>
         </plugins>
     </build>

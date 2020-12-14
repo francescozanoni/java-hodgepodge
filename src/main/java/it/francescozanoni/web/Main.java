@@ -10,9 +10,12 @@ import com.sun.net.httpserver.HttpServer;
 
 class Main {
 
+    private static final int serverPort = 8000;
+
     public static void main(String[] args) throws IOException {
-        int serverPort = 8000;
+
         HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
+
         server.createContext("/hello", (exchange -> {
             String respText = "Hi!";
             exchange.sendResponseHeaders(200, respText.getBytes().length);
@@ -21,8 +24,11 @@ class Main {
             output.flush();
             exchange.close();
         }));
+
         server.setExecutor(null); // creates a default executor
-        System.out.println("HTTP server listening at URL http://<thishost>:" + serverPort + "/hello");
-        server.start();  
+
+        server.start();
+
+        System.out.println("HTTP server listening at URL http://localhost:" + serverPort + "/hello");
     }
 }

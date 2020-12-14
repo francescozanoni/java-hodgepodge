@@ -5,7 +5,7 @@
 
 <?import javafx.scene.control.Button?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="it.francescozanoni.app.gui.counter.CounterController">
+          fx:controller="it.francescozanoni.gui.counter.CounterController">
     <Text fx:id="counter" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <Button text="increment COUNTER" onAction="#increment" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 </GridPane>

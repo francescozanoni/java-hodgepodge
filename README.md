@@ -9,14 +9,14 @@ Thorough documentation sources are listed within code comments.
 ### Experiments
 
 * `no_build_tool`: basic [JavaFX](https://openjfx.io) example, without [Maven](https://maven.apache.org)
-* `src/main/java/it/francescozanoni/app`:
+* `src/main/java/it/francescozanoni`:
   * `async`: asynchronicity, concurrency and lambda expressions
   * `cli`: command line app with [picocli](https://picocli.info) package
   * `concurrency/db`: concurrency while writing to database
   * `concurrency/http`: web pages concurrent download, with URLs [loaded from JSON](https://howtodoinjava.com/java/library/json-simple-read-write-json-examples) file and IBAN code extraction via [regular expression](https://www.vogella.com/tutorials/JavaRegularExpressions/article.html)
   * `gui`: several [JavaFX](https://openjfx.io) examples
   * `App.java`: dumb application used for dumb test
-* `src/main/java/it/francescozanoni/web`: basic web application (HTTP server), framework-less
+  * `web`: basic web application (HTTP server), framework-less
 * `src/test/java/it/francescozanoni/app/AppTest.java`: dumb test of dumb application
 
 ---
@@ -27,16 +27,24 @@ Thorough documentation sources are listed within code comments.
     ```
     mvn compile
     ```
-* single class execution:
-    ```
-    java -classpath target/classes it.francescozanoni.app.concurrency.http.Main
-    
-    # In case of java.lang.NoClassDefFoundError: org/json/simple/parser/ParseException
-    mvn exec:java -Dexec.mainClass="it.francescozanoni.app.concurrency.http.Main"
-    ```
-* package generation and execution:
+* package generation:
     ```
     mvn package
-    
+    ```
+* single class execution:
+  * without external dependencies:
+    ```
+    java -cp target/classes it.francescozanoni.web.Main
+    # or
+    java -cp target/original-java-hodgepodge-1.0-SNAPSHOT.jar it.francescozanoni.web.Main
+    ```
+  * with external dependencies:
+    ```
+    java -cp target/java-hodgepodge-1.0-SNAPSHOT.jar it.francescozanoni.concurrency.http.Main
+    ```
+    This is achieved via [maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin), which embeds all dependencies inside the package.
+    If not run this way, a `java.lang.ClassNotFoundException` is raised.
+* package execution:
+    ```
     java -jar target/java-hodgepodge-1.0-SNAPSHOT.jar
     ```

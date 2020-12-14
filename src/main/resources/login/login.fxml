@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="it.francescozanoni.app.gui.login.controllers.LoginController">
+      fx:controller="it.francescozanoni.gui.login.controllers.LoginController">
 
     <fx:include source="menu.fxml"/>
 
