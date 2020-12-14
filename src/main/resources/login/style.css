@@ -1,8 +1,11 @@
 GridPane {
-     -fx-padding: 10;
-     -fx-hgap: 10;
-     -fx-vgap: 10;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
 }
 VBox {
-     -fx-pref-width: 300;
+    -fx-pref-width: 300;
+}
+TableColumn {
+    -fx-pref-width: 1000; /* cannot make this work */
 }

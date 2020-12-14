@@ -22,7 +22,7 @@
         <TableView fx:id="requestTable"
                    GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
             <columns>
-                <TableColumn text="URL">
+                <TableColumn text="URL" prefWidth="200"> <!-- no way to set prefWidth via CSS, grrrrr... -->
                     <cellValueFactory>
                         <PropertyValueFactory property="url" />
                     </cellValueFactory>
