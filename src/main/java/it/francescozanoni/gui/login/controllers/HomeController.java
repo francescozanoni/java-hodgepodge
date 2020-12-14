@@ -66,4 +66,12 @@ public class HomeController implements Initializable {
         } while (keys.hasMoreElements());
 
     }
+
+    public void handleRemoveRequestButtonAction(ActionEvent actionEvent) {
+        ObservableList<Request> data = requestTable.getItems();
+        int numberOfRequests = data.size();
+        if (numberOfRequests > 0) {
+            data.remove(numberOfRequests - 1);
+        }
+    }
 }
