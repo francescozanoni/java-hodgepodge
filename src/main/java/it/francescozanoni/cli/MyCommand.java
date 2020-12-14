@@ -23,20 +23,25 @@ class MyCommand implements Callable<Integer> {
 
     @Option(names = {"-a", "--algorithm"},
             description = "MD5, SHA-1, SHA-256, ...")
-    private String algorithm = "MD5";
+    private final String algorithm = "MD5";
 
-    // this example implements Callable, so parsing, error handling and handling user
-    // requests for usage help or version help can be done with one line of code.
     public static void main(String... args) {
+
         int exitCode = new CommandLine(new MyCommand()).execute(args);
+
         System.exit(exitCode);
+
     }
 
     @Override
-    public Integer call() throws Exception { // your business logic goes here...
+    public Integer call() throws Exception {
+
         byte[] fileContents = Files.readAllBytes(file.toPath());
         byte[] digest = MessageDigest.getInstance(algorithm).digest(fileContents);
+
         System.out.printf("%0" + (digest.length * 2) + "x%n", new BigInteger(1, digest));
+
         return 0;
+
     }
 }
