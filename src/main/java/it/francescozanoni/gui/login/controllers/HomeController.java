@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 
@@ -29,6 +30,9 @@ public class HomeController implements Initializable {
     @FXML
     Label usernameLabel;
 
+    @FXML
+    Button removeRequestButton;
+
     public HomeController(Status status) {
         this.status = status;
     }
@@ -43,11 +47,12 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    protected void handleSubmitButtonAction(ActionEvent event) throws Exception {
+    protected void handleLogoutButtonAction(ActionEvent event) throws Exception {
         status.username = null;
         Utils.changeScene((Node) event.getSource(), Page.LOGIN);
     }
 
+    @FXML
     public void handleAddRequestsButtonAction(ActionEvent actionEvent) throws IOException {
         ObservableList<Request> data = requestTable.getItems();
 
@@ -65,13 +70,19 @@ public class HomeController implements Initializable {
             data.add(new Request(url, time));
         } while (keys.hasMoreElements());
 
+        // Enable "Remove request" button.
+        removeRequestButton.setDisable(false);
+
     }
 
+    @FXML
     public void handleRemoveRequestButtonAction(ActionEvent actionEvent) {
         ObservableList<Request> data = requestTable.getItems();
-        int numberOfRequests = data.size();
-        if (numberOfRequests > 0) {
-            data.remove(numberOfRequests - 1);
+        data.remove(data.size() - 1);
+
+        // If no requests left, disable "Remove request" button.
+        if (data.size() == 0) {
+            removeRequestButton.setDisable(true);
         }
     }
 }

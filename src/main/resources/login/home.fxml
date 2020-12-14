@@ -14,10 +14,10 @@
         <Label text="Logged as:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
         <Label fx:id="usernameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-        <Button text="Log out" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#handleSubmitButtonAction"/>
+        <Button text="Log out" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#handleLogoutButtonAction"/>
 
         <Button text="Add requests" GridPane.columnIndex="0" GridPane.rowIndex="2" onAction="#handleAddRequestsButtonAction"/>
-        <Button text="Remove request" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleRemoveRequestButtonAction"/>
+        <Button  fx:id="removeRequestButton" text="Remove request" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleRemoveRequestButtonAction"/>
 
         <TableView fx:id="requestTable"
                    GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
