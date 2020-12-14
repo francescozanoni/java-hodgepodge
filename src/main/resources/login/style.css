@@ -6,6 +6,7 @@ GridPane {
 VBox {
     -fx-pref-width: 300;
 }
-TableColumn {
-    -fx-pref-width: 1000; /* cannot make this work */
+
+.first-column {
+    -fx-pref-width: 150; /* if used with selector TableColumn, it is not applied */
 }
