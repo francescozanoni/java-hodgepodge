@@ -11,7 +11,7 @@ Thorough documentation sources are listed within code comments.
 * `no_build_tool`: basic [JavaFX](https://openjfx.io) example, without [Maven](https://maven.apache.org)
 * `src/main/java/it/francescozanoni`:
   * `async`: asynchronicity, concurrency and lambda expressions
-  * `cli`: command line app with [picocli](https://picocli.info) package
+  * `cli`: command line app with [picocli](https://picocli.info) framework
   * `concurrency/db`: concurrency while writing to database
   * `concurrency/http`: web pages concurrent download, with URLs [loaded from JSON](https://howtodoinjava.com/java/library/json-simple-read-write-json-examples) file and IBAN code extraction via [regular expression](https://www.vogella.com/tutorials/JavaRegularExpressions/article.html)
   * `gui`: several [JavaFX](https://openjfx.io) examples
