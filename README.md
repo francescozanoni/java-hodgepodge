@@ -44,7 +44,17 @@ Thorough documentation sources are listed within code comments.
     ```
     This is achieved via [maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin), which embeds all dependencies inside the package.
     If not run this way, a `java.lang.ClassNotFoundException` is raised.
+  * JavaFX class:
+    ```
+    mvn javafx:run -Djavafx.mainClass=it.francescozanoni.gui.example.FXMLExample
+    ```
 * package execution:
     ```
     java -jar target/java-hodgepodge-1.0-SNAPSHOT.jar
     ```
+
+---
+
+### Tips for IntelliJ IDEA
+
+* https://stackoverflow.com/questions/20496239/maven-plugins-can-not-be-found-in-intellij
