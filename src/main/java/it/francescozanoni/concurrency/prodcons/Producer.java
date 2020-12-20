@@ -8,36 +8,29 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class Producer implements Runnable 
 {
    private static Random generator = new Random();
-   private ArrayBlockingQueue<Integer> sharedLocation; // reference to shared object
+   private ArrayBlockingQueue<Integer> queue;
 
-   // constructor
-   public Producer( ArrayBlockingQueue<Integer> shared )
+   public Producer( ArrayBlockingQueue<Integer> queue )
    {
-      sharedLocation = shared;
-   } // end Producer constructor
+      this.queue = queue;
+   }
 
-   // store values from 1 to 10 in sharedLocation
    public void run()
    {
       int sum = 0;
 
-      for ( int count = 1; count <= 10; count++ ) 
-      {  
-         try // sleep 0 to 3 seconds, then place value in Buffer
-         {
-            Thread.sleep( generator.nextInt( 3000 ) ); // sleep thread   
-            sharedLocation.put( count ); // set value in buffer
-            sum += count; // increment sum of values
+      for ( int count = 1; count <= 10; count++ ) {  
+         try {
+            Thread.sleep( generator.nextInt( 3000 ) );   
+            queue.put( count );
+            sum += count;
             System.out.printf( "\t%2d\n", sum );
-         } // end try
-         // if sleeping thread interrupted, print stack trace
-         catch ( InterruptedException exception ) 
-         {
+         } catch ( InterruptedException exception ) {
             exception.printStackTrace();
-         } // end catch
-      } // end for
+         }
+      }
 
       System.out.printf( "\n%s\n%s\n", "Producer done producing.", 
          "Terminating Producer." );
-   } // end method run
-} // end class Producer
+   }
+}
