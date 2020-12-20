@@ -15,26 +15,19 @@ public class Producer implements Runnable
 
    public void run()
    {
-      int sum = 0;
+      // 9999 is the poison value.
+      // https://mkyong.com/java/java-blockingqueue-examples
+      int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9999};
 
-      for ( int count = 1; count <= 10; count++ ) {  
+      for ( int count : values ) {  
          try {
             queue.put( count );
-            sum += count;
-            System.out.printf( "\t%2d\n", sum );
+            System.out.printf( "\t%2d\n", count );
          } catch ( InterruptedException exception ) {
             exception.printStackTrace();
          }
       }
-      
-      try {
-            // Poison value.
-      // https://mkyong.com/java/java-blockingqueue-examples
-      queue.put(9999);
-         } catch ( InterruptedException exception ) {
-            exception.printStackTrace();
-         }
 
-      System.out.printf( "\n%s\n%s\n", "Producer done producing.", "Terminating Producer." );
+      System.out.println( "Producer done producing." );
    }
 }

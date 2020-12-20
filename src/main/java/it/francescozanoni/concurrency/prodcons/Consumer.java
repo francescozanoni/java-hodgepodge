@@ -14,8 +14,6 @@ public class Consumer implements Runnable
 
    public void run()
    {
-      int sum = 0;
-
       while ( true ) {
          try {
             int value = queue.take();
@@ -24,14 +22,13 @@ public class Consumer implements Runnable
              if (value == 9999) {
                 break;
              }
-            sum += value;
-            System.out.printf( "\t\t\t%2d\n", sum );
+            System.out.printf( "\t\t\t%2d\n", value );
          } catch ( InterruptedException exception ) {
             exception.printStackTrace();
          }
       }
 
-      System.out.printf( "\n%s %d.\n%s\n", "Consumer read values totaling", sum, "Terminating Consumer." );
+      System.out.println( "Consumer done consuming." );
    }
 }
 
