@@ -1,12 +1,10 @@
 package it.francescozanoni.concurrency.prodcons;
 
 // http://www2.cs.uregina.ca/~nova/Java_Study/Examples9/
-import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class Consumer implements Runnable 
 { 
-   private static Random generator = new Random();
    private ArrayBlockingQueue<Integer> queue;
 
    public Consumer( ArrayBlockingQueue<Integer> queue )
@@ -18,18 +16,22 @@ public class Consumer implements Runnable
    {
       int sum = 0;
 
-      for ( int count = 1; count <= 10; count++ ) {
+      while ( true ) {
          try {
-            Thread.sleep( generator.nextInt( 3000 ) );    
-            sum += queue.take();
+            int value = queue.take();
+             // Poison value.
+             // https://mkyong.com/java/java-blockingqueue-examples
+             if (value == 9999) {
+                break;
+             }
+            sum += value;
             System.out.printf( "\t\t\t%2d\n", sum );
          } catch ( InterruptedException exception ) {
             exception.printStackTrace();
          }
       }
 
-      System.out.printf( "\n%s %d.\n%s\n", 
-         "Consumer read values totaling", sum, "Terminating Consumer." );
+      System.out.printf( "\n%s %d.\n%s\n", "Consumer read values totaling", sum, "Terminating Consumer." );
    }
 }
 
