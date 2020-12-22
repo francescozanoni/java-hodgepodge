@@ -13,6 +13,7 @@ Thorough documentation sources are listed within code comments.
   * `async`: asynchronicity, concurrency and lambda expressions
   * `concurrency/db`: concurrency while writing to database
   * `concurrency/http`: web pages concurrent download, with URLs [loaded from JSON](https://howtodoinjava.com/java/library/json-simple-read-write-json-examples) file and IBAN code extraction via [regular expression](https://www.vogella.com/tutorials/JavaRegularExpressions/article.html)
+  * `concurrency/prodcons`: shared buffer populated by a Producer thread and polled by a Consumer Thread
   * `gui`: several [JavaFX](https://openjfx.io) examples
   * `files`: examples of file management
   * `App.java`: dumb application used for dumb test and as package executable entry point

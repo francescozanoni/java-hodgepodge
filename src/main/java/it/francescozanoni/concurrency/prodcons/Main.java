@@ -5,22 +5,37 @@ package it.francescozanoni.concurrency.prodcons;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
-public class Main
-{
-   public static void main( String[] args )
-   {
-      ExecutorService executor = Executors.newFixedThreadPool( 2 );
+public class Main {
 
-      ArrayBlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(3);
+    // As a convention, the poison value is supplied by the producer to stop the consumer.
+    // https://mkyong.com/java/java-blockingqueue-examples
+    public static final int poisonValue = 9999;
 
-      try {
-         executor.execute( new Producer( queue ) );
-         executor.execute( new Consumer( queue ) );
-      } catch ( Exception exception ) {
-         exception.printStackTrace();
-      }
+    public static void main(String[] args) throws InterruptedException {
 
-      executor.shutdown();
-   }
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        ArrayBlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(3);
+
+        System.out.println("-----------+-----------");
+        System.out.println("| PRODUCER | CONSUMER |");
+        System.out.println("-----------+-----------");
+
+        try {
+            executor.execute(new Producer(queue, poisonValue));
+            executor.execute(new Consumer(queue, poisonValue));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        executor.shutdown();
+
+        executor.awaitTermination(5, TimeUnit.SECONDS);
+
+        System.out.println("-----------+-----------");
+
+    }
+
 }

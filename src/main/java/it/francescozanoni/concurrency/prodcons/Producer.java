@@ -4,30 +4,32 @@ package it.francescozanoni.concurrency.prodcons;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
-public class Producer implements Runnable 
-{
-   private ArrayBlockingQueue<Integer> queue;
+public class Producer implements Runnable {
 
-   public Producer( ArrayBlockingQueue<Integer> queue )
-   {
-      this.queue = queue;
-   }
+    private final ArrayBlockingQueue<Integer> queue;
+    private final int poisonValue;
 
-   public void run()
-   {
-      // 9999 is the poison value.
-      // https://mkyong.com/java/java-blockingqueue-examples
-      int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9999};
+    public Producer(ArrayBlockingQueue<Integer> queue, int poisonValue) {
+        this.queue = queue;
+        this.poisonValue = poisonValue;
+    }
 
-      for ( int count : values ) {  
-         try {
-            queue.put( count );
-            System.out.printf( "\t%2d\n", count );
-         } catch ( InterruptedException exception ) {
-            exception.printStackTrace();
-         }
-      }
+    public void run() {
 
-      System.out.println( "Producer done producing." );
-   }
+        // As a convention, the poison value is supplied by the producer to stop the consumer.
+        // https://mkyong.com/java/java-blockingqueue-examples
+        int[] values = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, poisonValue};
+
+        for (int value : values) {
+            try {
+                queue.put(value);
+                if (value != poisonValue) {
+                    System.out.println("|     " + value + "    |          |");
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }
