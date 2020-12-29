@@ -8,7 +8,6 @@ Thorough documentation sources are listed within code comments.
 
 ### Experiments
 
-* `no_build_tool`: basic [JavaFX](https://openjfx.io) example, without [Maven](https://maven.apache.org)
 * `src/main/java/it/francescozanoni`:
   * `async`: asynchronicity, concurrency and lambda expressions
   * `concurrency/db`: concurrency while writing to database
