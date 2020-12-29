@@ -1,0 +1,12 @@
+{
+  "a": "a string",
+  "b": 4,
+  "c": {
+    "my_key": "my_value"
+  },
+  "d": null,
+  "e": [
+    "abc",
+    8
+  ]
+}
