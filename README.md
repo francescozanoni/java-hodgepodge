@@ -16,6 +16,7 @@ Thorough documentation sources are listed within code comments.
   * `gui`: several [JavaFX](https://openjfx.io) examples
   * `files`: examples of file management
   * `App.java`: dumb application used for dumb test and as package executable entry point
+  * `Json.java`: JSON file read
   * `web`: basic web application based on [HttpServer](https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpServer.html), framework-less
 * `src/test/java/it/francescozanoni/AppTest.java`: dumb test of dumb application
 * `maven.md`: [Maven](https://maven.apache.org) installation hints

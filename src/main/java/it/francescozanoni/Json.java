@@ -32,7 +32,11 @@ public class Json {
         JSONObject jsonObject = new JSONObject(jsonObjectString);
 
         System.out.println(jsonObject);
+
+        // Mandatory field: if not found, a JSONException is thrown.
         System.out.println(jsonObject.get("a"));
+
+        // Optional field: if not found, null is returned.
         System.out.println(jsonObject.opt("inexistent"));
 
     }
