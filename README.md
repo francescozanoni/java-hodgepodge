@@ -40,16 +40,15 @@ Thorough documentation sources are listed within code comments.
     # or
     java -cp target/original-java-hodgepodge-1.0-SNAPSHOT.jar it.francescozanoni.web.Main
     ```
-  * with external dependencies:
-    ```
-    java -cp target/java-hodgepodge-1.0-SNAPSHOT.jar it.francescozanoni.concurrency.http.Main
-    ```
-    This is achieved via [maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin), which embeds all dependencies inside the package.
-    If not run this way, a `java.lang.ClassNotFoundException` is raised.
-  * JavaFX class:
-    ```
-    mvn javafx:run -Djavafx.mainClass=it.francescozanoni.gui.example.FXMLExample
-    ```
+  * with external dependencies (in order to avoid `java.lang.ClassNotFoundException`):
+    * via [maven-exec-plugin](https://www.mojohaus.org/exec-maven-plugin), which automatically finds all dependencies at runtime:
+      ```
+      mvn exec:java -DmainClass=it.francescozanoni.gui.example.FXMLExample
+      ```
+    * via [maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin), which embeds all dependencies inside the package:
+      ```
+      java -cp target/java-hodgepodge-1.0-SNAPSHOT.jar it.francescozanoni.concurrency.http.Main
+      ```
 * package execution:
     ```
     java -jar target/java-hodgepodge-1.0-SNAPSHOT.jar

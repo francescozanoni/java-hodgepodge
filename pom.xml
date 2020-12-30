@@ -49,7 +49,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- https://stackoverflow.com/questions/38435221/how-to-pass-parameter-to-maven-plugin-from-cli -->
-        <javafx.mainClass></javafx.mainClass>
+        <mainClass></mainClass>
     </properties>
     <!--
     https://stackoverflow.com/questions/9689793/cant-execute-jar-file-no-main-manifest-attribute
@@ -57,6 +57,16 @@
     -->
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <!-- this is required to use lambda expressions -->
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
             <!-- Creates the essential jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -69,16 +79,6 @@
                             <mainClass>it.francescozanoni.App</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <!-- this is required to use lambda expressions -->
-                    <source>11</source>
-                    <target>11</target>
                 </configuration>
             </plugin>
             <!-- Creates the all inclusive uber jar -->
@@ -97,14 +97,14 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- https://openjfx.io/openjfx-docs/maven -->
+            <!-- Run a class, by automatically loading all dependencies -->
+            <!-- https://www.mojohaus.org/exec-maven-plugin/usage.html -->
             <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.5</version>
-                <!-- https://stackoverflow.com/questions/38435221/how-to-pass-parameter-to-maven-plugin-from-cli -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
                 <configuration>
-                    <mainClass>${javafx.mainClass}</mainClass>
+                    <mainClass>${mainClass}</mainClass>
                 </configuration>
             </plugin>
         </plugins>
