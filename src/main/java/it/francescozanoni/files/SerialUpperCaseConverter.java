@@ -1,15 +1,20 @@
 package it.francescozanoni.files;
 
 import it.francescozanoni.Utils;
+import it.francescozanoni.files.prodcons.Consumer;
+import it.francescozanoni.files.prodcons.Producer;
 
 import java.io.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * This class created a copy of a text file, by converting all characters to upper-case.
  *
  * Since start and end date/time are displayed, it's useful to benchmark several implementations with large input files.
  */
-public class UpperCaseConverter {
+public class SerialUpperCaseConverter {
 
     public static void main(String[] args) throws IOException {
 
@@ -18,7 +23,7 @@ public class UpperCaseConverter {
         String inputFilePath = Utils.getAbsoluteFilePathFromBase("storage/input.txt");
         String outputFilePath = Utils.getAbsoluteFilePathFromBase("storage/output.txt");
 
-        UpperCaseConverter.implementationA(inputFilePath, outputFilePath);
+        SerialUpperCaseConverter.implementationB(inputFilePath, outputFilePath);
 
         System.out.println(Utils.getCurrentDateTime());
 
@@ -41,6 +46,27 @@ public class UpperCaseConverter {
             while ((line = inputReader.readLine()) != null) {
                 outputWriter.append(line.toUpperCase()).append("\n");
             }
+
+        }
+
+    }
+
+    public static void implementationB(String inputFilePath, String outputFilePath) {
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        ArrayBlockingQueue<String> queue = new ArrayBlockingQueue<>(10000);
+
+        try {
+            executor.execute(new Producer(queue, inputFilePath));
+            executor.execute(new Consumer(queue, outputFilePath));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        executor.shutdown();
+
+        while (!executor.isTerminated()) {
 
         }
 
