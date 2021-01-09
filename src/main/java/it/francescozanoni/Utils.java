@@ -2,6 +2,7 @@ package it.francescozanoni;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.*;
 
 public class Utils {
 
@@ -32,6 +33,10 @@ public class Utils {
             relativeFilePath = relativeFilePath.substring(1);
         }
         return basePath + pathSeparator + relativeFilePath;
+    }
+    
+    public static String getBasePath() throws IOException {
+        return new File(".").getCanonicalPath();
     }
 
 }

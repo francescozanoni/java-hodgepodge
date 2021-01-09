@@ -43,7 +43,7 @@ Thorough documentation sources are listed within code comments.
   * with external dependencies (in order to avoid `java.lang.ClassNotFoundException`):
     * via [maven-exec-plugin](https://www.mojohaus.org/exec-maven-plugin), which automatically finds all dependencies at runtime:
       ```
-      mvn exec:java -DmainClass=it.francescozanoni.gui.example.FXMLExample
+      mvn exec:java -q -DmainClass=it.francescozanoni.gui.example.FXMLExample
       ```
     * via [maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin), which embeds all dependencies inside the package:
       ```
