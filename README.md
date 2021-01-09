@@ -15,6 +15,7 @@ Thorough documentation sources are listed within code comments.
   * `concurrency/prodcons`: shared buffer populated by a Producer thread and polled by a Consumer Thread
   * `gui`: several [JavaFX](https://openjfx.io) examples
   * `files`: examples of file management
+  * `db`: examples of database usage via JDBC with SQLite and Derby database engines
   * `App.java`: dumb application used for dumb test and as package executable entry point
   * `Json.java`: JSON file read
   * `web`: basic web application based on [HttpServer](https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpServer.html), framework-less

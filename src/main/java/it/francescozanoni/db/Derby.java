@@ -5,20 +5,26 @@ import java.sql.*;
 import java.util.concurrent.*;
 import it.francescozanoni.Utils;
 
-public class Main {
+public class Derby {
 
     public static void main(String[] args) throws IOException, SQLException, InterruptedException {
         
-        String dsn = "jdbc:sqlite:" + Utils.getBasePath() + "/storage/db.sqlite";
+        String dsn = "jdbc:derby:" + Utils.getBasePath() + "/storage/db.derby;create=true";
 
         Connection conn = DriverManager.getConnection(dsn);
 
         // Create database structure and populate table.
-        PreparedStatement pstmt_1 = conn.prepareStatement("CREATE TABLE IF NOT EXISTS my_table (my_field TEXT)");
+        PreparedStatement pstmt_1 = conn.prepareStatement("CREATE TABLE my_table (my_field VARCHAR(127))");
         pstmt_1.executeUpdate();
 
-        PreparedStatement pstmt_2 = conn.prepareStatement("SELECT COUNT(*) FROM my_table");
-        int numberOfRecords = pstmt_2.executeQuery().getInt(1);
+        PreparedStatement pstmt_2 = conn.prepareStatement("SELECT COUNT(*) AS c FROM my_table");
+        // https://stackoverflow.com/questions/16576331/java-sql-exception-invalid-cursor-state-no-current-row
+        int numberOfRecords = 0;
+        ResultSet rs_ = pstmt_2.executeQuery();
+            if (rs_.next()) {
+                numberOfRecords = rs_.getInt(1);
+            }
+        rs_.close();
 
         if (numberOfRecords == 0) {
             PreparedStatement pstmt_3 = conn.prepareStatement("INSERT INTO my_table(my_field) VALUES ('AAAA')");
@@ -33,6 +39,7 @@ public class Main {
                 String myField = rs.getString("my_field");
                 System.out.println(myField);
             }
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -41,7 +48,6 @@ public class Main {
         PreparedStatement pstmt = conn.prepareStatement("UPDATE my_table SET my_field = 'ABCD'");
         pstmt.executeUpdate();
         
-        /*
         // Update table via updatable result set (SQLite does not support it).
     try (Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
       ResultSet uprs = stmt.executeQuery("SELECT * FROM my_table");
@@ -50,6 +56,7 @@ public class Main {
         uprs.updateString("my_field", "OOoOo");
         uprs.updateRow();
       }
+      uprs.close();
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
@@ -62,10 +69,10 @@ public class Main {
                 String myField = rs.getString("my_field");
                 System.out.println(myField);
             }
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        */
         
         conn.close();
         
